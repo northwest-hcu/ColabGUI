@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <link href="./default.css" rel="stylesheet">
+    </head>
+    <body>
+        <p>Button</p>
+        <div class="colab_gui">
+            <div class="btn bg_orange font_white">送信</div>
+        </div>
+        <div class="colab_gui">
+            <a class="btn_download bg_orange font_white">送信</a>
+        </div>
+        <p>Input</p>
+        <div class="colab_gui">
+            <input type="text" class="input_text">
+        </div>
+        <div class="colab_gui">
+            <div class="input_label">test</div>
+            <input type="text" class="input_text">
+        </div>
+        </body>
+        <div class="colab_gui">
+            <div class="btn_input_file" id="btn_input_file_1">ファイルを選択</div>
+            <input type="file" class="input_file" id="input_file_1">
+        </div>
+        <script>
+            document.getElementById('btn_input_file_1').addEventListener('click',function(){
+                document.getElementById('input_file_1').click();
+            },false);
+        </script>
+</html>

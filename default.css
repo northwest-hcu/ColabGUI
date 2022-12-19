@@ -1,0 +1,119 @@
+.colab_gui {
+    margin:5px;
+    display: block;
+}
+.colab_gui * {
+    font-size: 20px;
+}
+
+/* button css */
+.btn, .btn_download, .btn_input_file {
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 5px;
+    border: 2px solid gray;
+    box-shadow: 0px 2px 2px 1px black;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 1;
+    display: inline-block;
+    font-weight: bold;
+    user-select: none;
+}
+.btn:hover, .btn_download:hover, .btn_input_file:hover {
+    opacity: 0.6;
+}
+.btn:active, .btn_download:active, .btn_input_file:active {
+    box-shadow: none;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.btn_input_file {
+    font-size: 12px;
+}
+.input_file {
+    display: none;
+}
+
+
+/* input text css */
+input[type="text"].input_text {
+    outline: 0px;
+    padding: 2px 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+input[type="text"].input_text:focus {
+    padding: 2px 5px;
+    border: 2px solid blue;
+}
+
+/* label */
+.input_label {
+    display: inline-block;
+    padding: 2px 5px;
+    margin: 2px;
+}
+.input_label::after {
+    content:':';
+}
+
+/* background-color css */
+.bg_black {
+    background-color: black;
+}
+.bg_gray {
+    background-color: gray;
+}
+.bg_white {
+    background-color: white;
+}
+.bg_red {
+    background-color: red;
+}
+.bg_orange {
+    background-color: orange;
+}
+.bg_yellow {
+    background-color: yellow;
+}
+.bg_green {
+    background-color: green;
+}
+.bg_blue {
+    background-color: blue;
+}
+.bg_purple {
+    background-color: purple;
+}
+
+/* font-color css */
+.font_black {
+    color: black;
+}
+.font_gray {
+    color: gray;
+}
+.font_white {
+    color: white;
+}
+.font_red {
+    color: red;
+}
+.font_orange {
+    color: orange;
+}
+.font_yellow {
+    color: yellow;
+}
+.font_green {
+    color: green;
+}
+.font_blue {
+    color: blue;
+}
+.font_purple {
+    color: purple;
+}
