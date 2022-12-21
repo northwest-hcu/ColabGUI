@@ -4,10 +4,18 @@ from google.colab.output import eval_js, register_callback
 
 class GUI:
     def __init__(self):
-        self.widgets = list()
-    def initialize(self, widget, content):
+        self.widgets = dict()
+
+    # set layout widget with unique key
+    def setWidget(self, key, widget):
+        self.widgets[key] = widget
+    
+    # initialize gui objects
+    def initialize(self):
         content = '''
-            <div id="gui_main"></div>
-            <script></script>
+            <script href = "./gui.js"></script>
             '''
+        display(HTML(content))
         
+        for widget in self.widgets:
+            widget.show()
