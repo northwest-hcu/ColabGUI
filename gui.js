@@ -1,28 +1,33 @@
-function createButton(temp_id){
-    const elem = document.createElement('div');
-    elem.classList.add('colab_gui');
-    elem.setAttribute('id', temp_id);
-    const btn = document.createElement('div');
-
-}
-class ColabGUIBtn{
-    constructor(key, label){
+class ColabGUIButton{
+    constructor(key, ...options){
+        console.log(options);
+        const main = document.getElementById('colab_gui_main');
         this.elem = document.createElement('div');
         this.btn = document.createElement('div');
         this.elem.classList.add('colab_gui');
+        this.btn.classList.add('btn');
+        this.btn.classList.add('font_' + font_color);
+        this.btn.classList.add('bg_' + bg_color);
+        this.font_color = font_color;
+        this.bg_color = bg_color;
         this.elem.setAttribute('id', key);
-        this.events = {};
+        main.appendChild(this.elem);
+        this.elem.appendChild(this.btn);
+        this.btn.innerHTML = options[label];
+        this.click_events = {};
     }
 
-    setEvent(function_name, ...args){
+    setClickEvent(function_name, ...args){
         const func = this.btn.addEventListener('click', function(){
             google.colab.kernel.invokeFunction(function_name, ...args);
         }, false);
-        this.events[function_name] = func;
+        this.click_events[function_name] = func;
     }
 
-    removeEvent(function_name){
-        this.elem.removeEventListener('click', this.events[function_name]);
-        this.events[function_name] = null; 
+    removeClickEvent(function_name){
+        this.elem.removeEventListener('click', this.click_events[function_name]);
+        this.click_events[function_name] = null; 
     }
+
+
 }

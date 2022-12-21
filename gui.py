@@ -13,6 +13,7 @@ class GUI:
     # initialize gui objects
     def initialize(self):
         content = '''
+            <div id = "colab_gui_main"></div>
             <script href = "./gui.js"></script>
             '''
         display(HTML(content))
