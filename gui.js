@@ -1,6 +1,5 @@
 class ColabGUIButton{
-    constructor(key, ...options){
-        console.log(options);
+    constructor(key, font_color = "black", bg_color = "white", label = "Push"){
         const main = document.getElementById('colab_gui_main');
         this.elem = document.createElement('div');
         this.btn = document.createElement('div');
@@ -13,7 +12,7 @@ class ColabGUIButton{
         this.elem.setAttribute('id', key);
         main.appendChild(this.elem);
         this.elem.appendChild(this.btn);
-        this.btn.innerHTML = options[label];
+        this.btn.innerHTML = label;
         this.click_events = {};
     }
 
