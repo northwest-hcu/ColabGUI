@@ -27,6 +27,5 @@ class ColabGUIButton{
         this.elem.removeEventListener('click', this.click_events[function_name]);
         this.click_events[function_name] = null; 
     }
-
-
 }
+
