@@ -14,10 +14,11 @@ class ColabGUIInput{
         this.elem.appendChild(this.content);
         this.label.innerHTML = label;
         this.content.value = 'test content';
+        this.key = key;
     }
 
-    getValue(){
-        google.colab.kernel.invokeFunction('n.testGetter', [this.content.value], {});
+    async getValue(){
+        google.colab.kernel.invokeFunction('n.testGetter', [this.key, this.content.value], {});
     }
 }
 
