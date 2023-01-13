@@ -1,5 +1,5 @@
 class ColabGUIInput{
-    constructor(key, label = "Input > "){
+    constructor(key, label){
         const main = document.getElementById('colab_gui_main');
         this.elem = document.createElement('div');
         this.label = document.createElement('div');
@@ -18,5 +18,8 @@ class ColabGUIInput{
     }
     getValue(){
         return this.content.value;
+    }
+    setLabel(label){
+        this.label.innerHTML = label;
     }
 }

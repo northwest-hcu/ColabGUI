@@ -17,15 +17,16 @@ class ColabGUIButton{
     }
 
     setClickEvent(function_name, ...args){
-        const func = this.btn.addEventListener('click', function(){
+        const func = function(function_name, ...args){
             google.colab.kernel.invokeFunction(function_name, ...args);
-        }, false);
+        }
+        this.btn.addEventListener('click', func, false);
         this.click_events[function_name] = func;
     }
 
     removeClickEvent(function_name){
-        this.elem.removeEventListener('click', this.click_events[function_name]);
-        this.click_events[function_name] = null; 
+        this.btn.removeEventListener('click', this.click_events[function_name]);
+        this.click_events[function_name] = null;
     }
 }
 
