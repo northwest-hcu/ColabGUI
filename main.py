@@ -3,6 +3,7 @@ from IPython.display import display, HTML, Javascript
 from google.colab.output import eval_js, register_callback
 from google.colab import drive, output
 
+# ドライブの読み込み(自分のドライブのホームにあるcolabGUIのディレクトリから参照)
 drive.mount('/rootingColabGUI')
 HOME_PATH = '../rootingColabGUI/MyDrive/colabGUI'
 fp = open(HOME_PATH + '/ColabGUIButton.js', 'r')
@@ -15,30 +16,37 @@ fp = open(HOME_PATH + '/default.css', 'r')
 default_css = fp.read()
 fp.close()
 
-valStore = dict()
-
+# テスト動作関数
 def testFunc():
   print('test done')
 
-def testGetter(key, value):
-  global valStore
-  valStore[key] = value
-
 def getValue(key):
-  global valStore
-  js = "document.querySelector('#" + key + " .input_text').getValue();"
-  print(js)
-  eval_js(js)
-  return valStore[key]
+  return = eval_js('getValue({})'.format(key))
 
+# 出力場所作成 + 必要情報の入力
 display(HTML("<div id='colab_gui_main'></div>"))
 display(HTML('<style>' + (default_css) + '</style>'))
 display(HTML('<script>' + (colab_gui_button_js) + '</script>'))
 display(HTML('<script>' + (colab_gui_input_js) + '</script>'))
-output.register_callback('n.testFunc', testFunc)
-output.register_callback('n.testGetter', testGetter)
 
-display(HTML("<script>const c_btn = new ColabGUIButton('test_btn');c_btn.setClickEvent('n.testFunc');</script>"))
+
+class ColabGUIButton:
+  def __init__(self, key):
+    self.key = key
+    display(HTML("<script>const colabguibtn_" + self.key + " = new ColabGUIButton(" + self.key + ");</script>"))
+  def attachEvent(self, event):
+    f_name = event.__name__
+    display(HTML("<script>colabguibtn_{}.setClickEvent({});</script>").format(self.key, 'n.' + f_name))
+    output.register_callback('n.' + f_name, event)
+  def removeEvent(self, event):
+    f_name = event.__name__
+    display(HTML("<script>colabguibtn_{}.removeClickEvent({});</script>").format(self.key, 'n.' + f_name))
+
+class ColabGUIInput:
+  def __init__(self, key):
+    
+
 display(HTML("<script>const c_input = new ColabGUIInput('test_input');</script>"))
 
-print(getValue('testInput'))
+time.sleep(10)
+print(getValue('test_input'))
