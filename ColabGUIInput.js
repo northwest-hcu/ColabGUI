@@ -13,25 +13,10 @@ class ColabGUIInput{
         this.elem.appendChild(this.label);
         this.elem.appendChild(this.content);
         this.label.innerHTML = label;
-        this.content.value = 'test content';
+        // this.content.value = 'test content';
         this.key = key;
     }
-    /*getValue(){
-        google.colab.kernel.invokeFunction('n.testGetter', [this.key, this.content.value], {});
-    }*/
-}
-
-function getValue(key){
-    const values = document.querySelectorAll('.colab_gui .input_text');
-    for(let i=0; i<values.length; i++){
-        console.log(values[i]);
+    getValue(){
+        return this.content.value;
     }
-    if(values[i].parentNode.id === key){
-        return values[i];
-    }
-    return false;
-}
-
-async function getValueFunction(key){
-    google.colab.kernel.invokeFunction('n.testGetter', [key, getValue(key)], {});
 }
